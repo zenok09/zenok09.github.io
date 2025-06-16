@@ -1,30 +1,51 @@
 <h1>first</h1>
-<div style='width:400px; height:400px; background-color: orange;display: flex;border: 10px solid #ff00e3;'>
-  ${creerColonne('inverse')}
-  ${creerColonne()}
-  ${creerColonne('inverse')}
-  ${creerColonne()}
-  ${creerColonne('inverse')}
-  ${creerColonne()}
-  ${creerColonne('inverse')}
-  ${creerColonne()}
-</div>
-<script>creerColonne = ƒ(sens)
-function creerColonne(sens){
-  let colonne = html`<div class="colonne"></div>`
-  for (let i=0;i<4;i++){
-   if (sens === 'inverse'){
-     colonne.append(  html`<div class="case noir" style='width:50px; height:50px; background-color:orange;'></div>`)
-     colonne.append(  html`<div class="case blanc " style='width:50px; height:50px; background-color: purple;'></div>`)
-    
-     
-   } else  {   
-    
-     colonne.append(  html`<div class="case blanc " style='width:50px; height:50px; background-color: purple;'></div>`)
-     colonne.append(  html`<div class="case noir" style='width:50px; height:50px; background-color: orange;'></div>`)
-     
-   }
-
+<div
+  id="echiquier"
+  style="
+    width: 400px;
+    height: 400px;
+    background-color: orange;
+    display: flex;
+    border: 10px solid #ff00e3;
+  "
+></div>
+<script>
+  function creerEchiquier() {
+    const echiquier = document.getElementById("echiquier");
+    echiquier.append(creerColonne("inverse"));
+    echiquier.append(creerColonne());
+    echiquier.append(creerColonne("inverse"));
+    echiquier.append(creerColonne());
+    echiquier.append(creerColonne("inverse"));
+    echiquier.append(creerColonne());
+    echiquier.append(creerColonne("inverse"));
+    echiquier.append(creerColonne());
   }
- return colonne  
-}</script>
+
+  function creerColonne(sens) {
+    let colonne = document.createElement("div");
+    colonne.className = "colonne";
+    for (let i = 0; i < 4; i++) {
+      const cellule1 = document.createElement("div");
+      cellule1.className = "case";
+      cellule1.style.width = "50px";
+      cellule1.style.height = "50px";
+      cellule1.style.backgroundColor = "orange";
+      const cellule2 = document.createElement("div");
+      cellule2.className = "case";
+      cellule2.style.width = "50px";
+      cellule2.style.height = "50px";
+      cellule2.style.backgroundColor = "purple";
+      if (sens === "inverse") {
+        colonne.append(cellule1);
+        colonne.append(cellule2);
+      } else {
+        colonne.append(cellule2);
+        colonne.append(cellule1);
+      }
+    }
+    return colonne;
+  }
+
+  creerEchiquier();
+</script>
