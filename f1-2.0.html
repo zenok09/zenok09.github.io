@@ -1,0 +1,81 @@
+<a href="./index.html"><img src="home.png" width="32px" ;height="32px" /></a>
+<h1>Classement formula 1 2025</h1>
+<div style='width:1200px; height:1200px; background-color: white;display: flex;border: 5px solid black'>
+    <section class="classement">
+        <table id="classement">
+            <tr>
+                <th class="rang">&nbsp;</th>
+                <th class="club" colspan="2">Pilote</th>
+                <th class="pts">Pts</th>
+                <th class="victoire">Vict.</th>
+                <th class="dnf">dnf</th>
+                <th class="photo pilote">portrait</th>
+            </tr>
+            <tr class="alternate1" style="background-color: white;">
+                <td class="rang">1</td>
+                <td class="logo_club" style="padding-top:10px">
+                    <span class="drapeau AUS">&nbsp;</span>
+                </td>
+                <td class="alternate1 club"><a class="lien"
+                        href="//www.lequipe.fr/Formule-1/Formule1FichePilote866.html"
+                        target="_parent">O.&nbsp;Piastri</a></td>
+                </td><!-- -1-->
+                <td class="score">
+                    <strong>198</strong>
+                </td>
+                <td class="victoire">5</td>
+                </td><!-- -1-->
+                <td classe="dnf">0</td>
+                <td classe="portrait"><img src="Oscar_Piastri.png" width="50px" ;height="50px" /></td>
+            </tr>
+        </table>
+    </section>
+</div>
+
+<script>
+    const data = [
+        //  1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21
+        { rang: 1, nom: "piastri", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote866.html", score: 198, vict: 5, dnf: 0, portrait: },
+        { rang: 2, nom: "norris", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote766.html", score: 176, vict: 2, dnf: 1,portrait },
+        { rang: 3, nom: "versappen", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote743.html", score: 155, vict: 2, dnf: 1, portrait},
+        { rang: 4, nom: "russell", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote764.html", score: 136, vict: 1, dnf: 1 ,portrait},
+        { rang: 5, nom: "leclerc", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote757.html", score: 104, vict: 0, dnf: 2 ,portrait},
+        { rang: 6, nom: "hamilton", href: "https://www.lequipe.fr/Formule-1/Formule1FichePilote4000000000000644.html", score: 79, vict: 0, dnf: 2,portrait },
+
+    ]
+    function creerClassement() {
+        const classement = document.getElementById("classement");
+        for (let coureur of data) {
+            classement.append(creerLigne(coureur));
+        }
+    }
+    creerClassement();
+    function creerLigne(coureur) {
+        let ligne = document.createElement("tr");
+        ligne.append(creerCellule(coureur.rang))
+        let contenupilote = creerLien(coureur.nom, coureur.href)
+        ligne.append(creerCellule(contenupilote))
+        ligne.append(creerCellule(coureur.score))
+        ligne.append(creerCellule(coureur.vict))
+        ligne.append(creerCellule(coureur.dnf))
+        ligne.append(creerCellule(coureur.portrait))
+        return ligne
+    }
+    function creerCellule(contenu) {
+        let cellule = document.createElement("td");
+        cellule.append(contenu)
+        return cellule
+    }
+    function creerLien(contenu, href) {
+        let lien = document.createElement("a")
+        lien.append(contenu)
+        lien.href = href
+        return lien
+    }
+    function creerPortrait(contenu) {
+        let img = document.createElement("scr")
+        img.append(contenu)
+        width="50px" ;height="50px"
+        return img
+    }
+</script>
