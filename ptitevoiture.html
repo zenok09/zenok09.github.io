@@ -1,0 +1,35 @@
+<a href="./index.html"><img src="home.png" width="32px" ;height="32px" /></a>
+<div id="desert" style="background-color: khaki;width:1200px;height:1200px; position: relative; ">
+    <img id="tutute" src="tutute-removebg-preview.png" width="64px" height="64px" style="position: absolute; background-color:transparent;top: 40px;left: 40px; transition: top 0.2s,left 0.2s,transform 0.8s;">
+</div>
+<script>
+    let left = 50;
+    let pastop = 50;
+    const tutute = document.getElementById("tutute")
+    window.onkeydown = gerertouche
+    function gerertouche(event) {
+        console.log(event.code)
+        if (event.code === "ArrowRight") {
+            left = left + 10
+            tutute.style.transform = "rotate(90deg)"
+            tutute.style.left = left + "px"
+
+        } else if (event.code === "ArrowLeft") {
+            left = left - 10
+            tutute.style.transform = "rotate(-90deg)"
+            tutute.style.left = left + "px"
+
+        } else if (event.code === "ArrowUp") {
+            pastop = pastop - 10
+            tutute.style.transform = "rotate(0deg)"
+            tutute.style.top = pastop + "px"
+            event.preventDefault()
+        } else if (event.code === "ArrowDown") {
+            pastop = pastop + 10
+            tutute.style.transform = "rotate(180deg)"
+            tutute.style.top = pastop + "px"
+            event.preventDefault()
+        }
+    }
+
+</script>
